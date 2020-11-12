@@ -293,4 +293,5 @@
 /define:CSHARP_7_3_OR_NEWER
 Assets\Scripts\CubeEditor.cs
 Assets\Scripts\EnemyMovement.cs
+Assets\Scripts\PathFinder.cs
 Assets\Scripts\Waypoint.cs
