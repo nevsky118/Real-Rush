@@ -9,7 +9,6 @@ public class PathFinder : MonoBehaviour
     Dictionary<Vector2, Waypoint> grid = new Dictionary<Vector2, Waypoint>();
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true;
-
     List<Waypoint> path = new List<Waypoint>();
 
     Waypoint searchCenter; // the current searchCenter
@@ -22,11 +21,18 @@ public class PathFinder : MonoBehaviour
     };
     public List<Waypoint> GetPath()
     {
+        if (path.Count == 0)
+        {
+            CalculatePath();
+        }
+        return path;
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
-        ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
-        return path;
     }
 
     private void CreatePath()
@@ -92,11 +98,11 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
-    }
+    //private void colorstartandend()
+    //{
+    //    startwaypoint.settopcolor(color.green);
+    //    endwaypoint.settopcolor(color.red);
+    //}
 
     private void LoadBlocks()
     {
