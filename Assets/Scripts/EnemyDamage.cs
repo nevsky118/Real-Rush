@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
+    [SerializeField] ParticleSystem hitParticlePrefab;
+    [SerializeField] ParticleSystem deathParticlePrefab;
+    [SerializeField] AudioClip enemyDeathSFX;
 
     [SerializeField] int hitPoints = 10;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] AudioClip enemyHitSFX;
+
 
     private void OnParticleCollision(GameObject other)
     {
@@ -24,10 +24,18 @@ public class EnemyDamage : MonoBehaviour
 
     void ProcessHit()
     {
+        GetComponent<AudioSource>().PlayOneShot(enemyHitSFX);
+        hitParticlePrefab.Play();
         hitPoints--;
     }
     private void KillEnemy()
     {
+        var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        vfx.Play();
+
+        Destroy(vfx.gameObject, vfx.main.duration);
+        AudioSource.PlayClipAtPoint(enemyDeathSFX, Camera.main.transform.position);
+
         Destroy(gameObject);
     }    
 }

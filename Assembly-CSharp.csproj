@@ -68,7 +68,9 @@
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
+    <Compile Include="Assets\Scripts\TowerFactory.cs" />
     <Compile Include="Assets\Scripts\Waypoint.cs" />
     <None Include="Assets\Skybox\Readme.txt" />
     <Reference Include="UnityEngine">
